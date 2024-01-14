@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": ".",
+    "checkJs": false,
+    "jsx": "react-native",
+    "module": "ES6",
+    "paths": {
+      "@/components": ["./src/common/components"],
+      "@/hooks": ["./src/common/hooks"],
+      "@/schemas": ["./src/common/schemas"],
+      "@/*": ["./src/*"]
+    },
+    "strictNullChecks": true
+  },
+  "exclude": ["node_modules"],
+  "extends": "expo/tsconfig.base"
+}

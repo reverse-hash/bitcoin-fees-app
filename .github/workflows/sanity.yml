@@ -1,0 +1,19 @@
+name: sanity build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "21.x"
+      - name: Install dependencies
+        run: npm install
+      - name: Check prettier
+        run: npm run prettier-check
+      - name: Check ESLint
+        run: npm run eslint-check
+      - name: Build for Android
+        run: npm run android

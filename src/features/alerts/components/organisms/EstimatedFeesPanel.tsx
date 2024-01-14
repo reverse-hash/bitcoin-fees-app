@@ -18,6 +18,7 @@ export function EstimatedFeesPanel(): ReactElement {
     refetchOnFocus: true,
     refetchOnReconnect: true,
   });
+  console.log(data, error);
   const isLoading = isFetching || Boolean(error);
 
   const isFocused = useIsFocused();

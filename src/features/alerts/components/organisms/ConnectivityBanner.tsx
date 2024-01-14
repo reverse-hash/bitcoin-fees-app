@@ -10,7 +10,7 @@ export function ConnectivityBanner(): ReactElement {
   const { theme } = useTheme();
   const { data, error } = useGetHealthQuery(undefined, { pollingInterval: 3000 });
   const isOnline = data && data.status === "ok" && error === undefined;
-
+  console.log(data, error);
   const openHelp = () => Linking.openURL(HELP_URL);
 
   return (

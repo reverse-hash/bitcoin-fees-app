@@ -10,7 +10,8 @@
     "prettier-check": "prettier --check .",
     "prettier-fix": "prettier --write .",
     "release": "expo run:android --variant release",
-    "start": "expo start"
+    "start": "expo start",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.18.2",

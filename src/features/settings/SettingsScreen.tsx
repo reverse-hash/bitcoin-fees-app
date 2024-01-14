@@ -4,7 +4,7 @@ import * as Application from "expo-application";
 import { ScreenContainer } from "@/components";
 import { useTheme } from "@/hooks";
 import { i18n } from "@/i18n";
-import { API_URL, APP_VERSION } from "@env";
+import { API_HOST, APP_VERSION } from "@env";
 
 import { Label, Section, TextValue } from "./components";
 
@@ -29,7 +29,7 @@ export function Settings() {
         <Section name={i18n.t("about")}>
           <View style={styles.row}>
             <Label>{i18n.t("server")}</Label>
-            <TextValue>{API_URL}</TextValue>
+            <TextValue>{API_HOST}</TextValue>
           </View>
           <View style={styles.row}>
             <Label>{i18n.t("version")}</Label>

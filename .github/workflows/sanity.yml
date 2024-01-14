@@ -29,4 +29,4 @@ jobs:
           ndk-version: 23.1.7779620
           sdk-version: 34
       - name: Build for Android
-        run: npm run android
+        run: npm run release

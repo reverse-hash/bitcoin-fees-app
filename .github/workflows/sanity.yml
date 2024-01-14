@@ -30,7 +30,7 @@ jobs:
           sdk-version: 34
       - name: Build emulator
         run: |
-          sdkmanager --install "system-images;android-34;google_apis;x86"
-          avdmanager --verbose create avd -n build -k "system-images;android-34;google_apis;x86"
+          echo -ne "y\ny" | sdkmanager --install "system-images;android-34;default;x86_64"
+          avdmanager --verbose create avd -n build -k "system-images;android-34;default;x86_64"
       - name: Build for Android
         run: npm run release

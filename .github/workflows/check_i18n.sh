@@ -24,7 +24,7 @@ for file in "${files[@]}"; do
     
     if [ -n "$diff_keys" ]; then
         echo "failed (miss or extra keys)."
-        echo $diff_keys
+        echo "$diff_keys"
         exit 1
     else
         echo "ok."

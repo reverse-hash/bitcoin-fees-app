@@ -5,16 +5,21 @@ import Icon from "react-native-ionicons";
 
 import { useTheme } from "@/hooks";
 import { Screen, ScreenParamList } from "@/navigation";
+import { DEVELOPER_MODE } from "@env";
 
-export function Toolbar(): ReactElement {
+export function AlertsHeaderRight(): ReactElement {
   const navigation = useNavigation<NavigationProp<ScreenParamList>>();
   const { theme } = useTheme();
 
   const onPress = () => navigation.navigate(Screen.SETTINGS);
 
   return (
-    <TouchableOpacity onPress={onPress}>
-      <Icon name="build" size={20} color={theme.primaryColor} />
-    </TouchableOpacity>
+    <>
+      {DEVELOPER_MODE && (
+        <TouchableOpacity onPress={onPress}>
+          <Icon name="build" size={20} color={theme.primaryColor} />
+        </TouchableOpacity>
+      )}
+    </>
   );
 }

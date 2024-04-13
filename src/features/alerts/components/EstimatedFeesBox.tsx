@@ -12,7 +12,7 @@ interface Props {
   backgroundColor: string;
 }
 
-export function EstimatedFeeBox({ isLoading, sats, legend, backgroundColor }: Props): ReactElement {
+export function EstimatedFeesBox({ isLoading, sats, legend, backgroundColor }: Props): ReactElement {
   const { theme } = useTheme();
 
   return (

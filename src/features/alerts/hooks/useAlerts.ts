@@ -2,8 +2,8 @@ import * as Crypto from "expo-crypto";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { useAppSelector } from "@/hooks";
 import { registerAlertCheckerTask, unregisterAlertCheckerTask } from "@/features/alerts/tasks/AlertCheckerTask";
+import { useAppSelector } from "@/hooks";
 
 import * as alertsSlice from "../alertsSlice";
 import { Alert } from "./../alertsSlice";
@@ -13,7 +13,7 @@ export { Alert } from "./../alertsSlice";
 interface UseAlertsReturn {
   alerts: Alert[];
   addAlert: (alert: Omit<Alert, "id">) => void;
-  inactivateAlert: (id: string) => void;
+  activateAlert: (id: string, active: boolean) => void;
   deleteAlert: (id: string) => void;
 }
 
@@ -38,8 +38,8 @@ export function useAlerts(): UseAlertsReturn {
     }
   };
 
-  const inactivateAlert = (id: string) => dispatch(alertsSlice.inactivateAlert(id));
+  const activateAlert = (id: string, active: boolean) => dispatch(alertsSlice.activateAlert({ id, active }));
   const deleteAlert = (id: string) => dispatch(alertsSlice.deleteAlert(id));
 
-  return { alerts, addAlert, inactivateAlert, deleteAlert };
+  return { alerts, addAlert, activateAlert, deleteAlert };
 }

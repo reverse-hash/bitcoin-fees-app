@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
     "allowJs": false,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "checkJs": false,
     "jsx": "react-native",
-    "module": "ES6",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "paths": {
-      "@/components": ["./src/common/components"],
-      "@/hooks": ["./src/common/hooks"],
-      "@/schemas": ["./src/common/schemas"],
-      "@/*": ["./src/*"]
+      "@/assets": ["assets"],
+      "@/components": ["common/components"],
+      "@/hooks": ["common/hooks"],
+      "@/schemas": ["common/schemas"],
+      "@/*": ["*"]
     },
     "strictNullChecks": true
   },

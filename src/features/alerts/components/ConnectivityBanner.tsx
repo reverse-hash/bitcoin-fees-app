@@ -8,9 +8,9 @@ import { HELP_URL } from "@env";
 
 export function ConnectivityBanner(): ReactElement {
   const { theme } = useTheme();
-  const { data, error } = useGetHealthQuery(undefined, { pollingInterval: 3000 });
-  const isOnline = data && data.status === "ok" && error === undefined;
-  console.log(data, error);
+  const { data, error } = useGetHealthQuery(undefined, { pollingInterval: 60000 });
+  const isOnline = data?.status === "ok" && error === undefined;
+  console.log({ isOnline, data, error });
   const openHelp = () => Linking.openURL(HELP_URL);
 
   return (

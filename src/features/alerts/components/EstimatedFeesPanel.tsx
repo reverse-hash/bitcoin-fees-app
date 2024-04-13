@@ -6,7 +6,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { AppState, useAppState, useGetEstimatedFeesQuery, useTheme } from "@/hooks";
 import { i18n } from "@/i18n";
 
-import { EstimatedFeeBox } from "../molecules";
+import { EstimatedFeesBox } from "./EstimatedFeesBox";
 
 const ONE_MINUTE = 60000;
 
@@ -18,7 +18,7 @@ export function EstimatedFeesPanel(): ReactElement {
     refetchOnFocus: true,
     refetchOnReconnect: true,
   });
-  console.log(data, error);
+
   const isLoading = isFetching || Boolean(error);
 
   const isFocused = useIsFocused();
@@ -45,25 +45,25 @@ export function EstimatedFeesPanel(): ReactElement {
   return (
     <Pressable onPress={onPress}>
       <View style={styles.container}>
-        <EstimatedFeeBox
+        <EstimatedFeesBox
           isLoading={isLoading}
           sats={data?.lessThan24hours}
           legend={i18n.t("less-than-n-hours", 24)}
           backgroundColor={palette[3]}
         />
-        <EstimatedFeeBox
+        <EstimatedFeesBox
           isLoading={isLoading}
           sats={data?.lessThan6hours}
           legend={i18n.t("less-than-n-hours", 6)}
           backgroundColor={palette[2]}
         />
-        <EstimatedFeeBox
+        <EstimatedFeesBox
           isLoading={isLoading}
           sats={data?.lessThan1hour}
           legend={i18n.t("less-than-1-hour")}
           backgroundColor={palette[1]}
         />
-        <EstimatedFeeBox
+        <EstimatedFeesBox
           isLoading={isLoading}
           sats={data?.lessThan20min}
           legend={i18n.t("less-than-20-min")}

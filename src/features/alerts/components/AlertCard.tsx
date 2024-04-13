@@ -5,7 +5,7 @@ import Icon from "react-native-ionicons";
 import { useTheme } from "@/hooks";
 import { i18n } from "@/i18n";
 
-import { Alert, useAlerts } from "../../hooks/useAlerts";
+import { Alert, useAlerts } from "../hooks/useAlerts";
 
 interface Props {
   alert: Alert;
@@ -17,16 +17,13 @@ export function AlertCard({ alert }: Props): ReactElement {
 
   const { theme } = useTheme();
 
-  const { deleteAlert, inactivateAlert } = useAlerts();
+  const { deleteAlert, activateAlert } = useAlerts();
 
   const handleDelete = () => deleteAlert(id);
 
   const onValueChange = (value: boolean) => {
     setIsEnabled(value);
-
-    if (!value) {
-      inactivateAlert(id);
-    }
+    activateAlert(id, value);
   };
 
   return (

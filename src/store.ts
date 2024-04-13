@@ -2,21 +2,19 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from "redux-persist";
 
-import { estimateFeesApi } from "@/api/estimatedFeesApi";
+import { bitcoinFeesApi } from "@/api/bitcoinFeesApi";
 import alertsReducer from "@/features/alerts/alertsSlice";
-import settingsSlice from "@/features/settings/settingsSlice";
 
 export const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["alerts", "settings"],
+  whitelist: ["alerts"],
   blacklist: [],
 };
 
 const rootReducer = combineReducers({
   alerts: alertsReducer,
-  settings: settingsSlice,
-  [estimateFeesApi.reducerPath]: estimateFeesApi.reducer,
+  [bitcoinFeesApi.reducerPath]: bitcoinFeesApi.reducer,
 });
 
 export type RootReducer = ReturnType<typeof rootReducer>;
@@ -30,7 +28,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(estimateFeesApi.middleware),
+    }).concat(bitcoinFeesApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

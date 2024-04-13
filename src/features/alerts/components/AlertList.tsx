@@ -4,7 +4,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { useAppSelector, useTheme } from "@/hooks";
 import { i18n } from "@/i18n";
 
-import { AlertCard } from "../molecules";
+import { AlertCard } from "./AlertCard";
 
 export function AlertList(): ReactElement {
   const { theme } = useTheme();

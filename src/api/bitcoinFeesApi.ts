@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { InferType, object, string } from "yup";
 
 import { satsSchema } from "@/schemas";
-import { API_HOST } from "@env";
+import { API_HOST, API_PORT } from "@env";
 
 const estimateFeesSchema = object().shape({
   level: string().oneOf(["low", "medium", "high"]).required(),
@@ -21,16 +21,19 @@ export type EstimatedFees = InferType<typeof estimateFeesSchema>;
 
 export type Health = InferType<typeof healthSchema>;
 
-export const estimateFeesApi = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "http://" + API_HOST, timeout: 10000 }),
+export const bitcoinFeesApi = createApi({
+  baseQuery: fetchBaseQuery({ baseUrl: "https://" + API_HOST + ":" + API_PORT + "/", mode: "cors", timeout: 10000 }),
   endpoints: (builder) => ({
     getEstimatedFees: builder.query<EstimatedFees, void>({
-      query: () => "/estimated-fees",
+      query: () => "estimated-fees",
     }),
     getHealth: builder.query<Health, void>({
-      query: () => "/health",
+      query: () => "health",
+      transformErrorResponse: (baseQueryReturnValue: any, meta: any, arg: any) => {
+        console.log({ baseQueryReturnValue, meta, arg });
+      },
     }),
   }),
 });
 
-export const { useGetEstimatedFeesQuery, useGetHealthQuery } = estimateFeesApi;
+export const { useGetEstimatedFeesQuery, useGetHealthQuery } = bitcoinFeesApi;

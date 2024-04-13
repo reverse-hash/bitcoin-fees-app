@@ -3,9 +3,9 @@ import * as Notifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
 import * as Application from "expo-application";
 
-import { inactivateAlert } from "@/features/alerts/alertsSlice";
+import { activateAlert } from "@/features/alerts/alertsSlice";
 import { store } from "@/store";
-import { estimateFeesApi } from "@/hooks";
+import { bitcoinFeesApi } from "@/hooks";
 import { i18n } from "@/i18n";
 
 const BACKGROUND_FETCH_TASK = "alert-checker";
@@ -34,7 +34,7 @@ TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
     return BackgroundFetch.BackgroundFetchResult.NoData;
   }
 
-  const { data: fees, isSuccess } = await store.dispatch(estimateFeesApi.endpoints.getEstimatedFees.initiate());
+  const { data: fees, isSuccess } = await store.dispatch(bitcoinFeesApi.endpoints.getEstimatedFees.initiate());
   console.log("fetch data from api");
   if (!isSuccess) {
     console.log("failure fetching data");
@@ -59,7 +59,7 @@ TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
     });
 
     for await (const alert of triggeredAlerts) {
-      store.dispatch(inactivateAlert(alert.id));
+      store.dispatch(activateAlert({ id: alert.id, active: false }));
     }
   }
 

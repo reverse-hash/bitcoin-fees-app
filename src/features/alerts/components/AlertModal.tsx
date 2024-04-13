@@ -6,9 +6,9 @@ import { Button, Heading } from "@/components";
 import { useTheme } from "@/hooks";
 import { i18n } from "@/i18n";
 
-import { useAlerts } from "../../hooks/useAlerts";
-import { useDisclosure } from "../../hooks/useDisclosure";
-import { SatsNumberPicker } from "../molecules";
+import { useAlerts } from "../hooks/useAlerts";
+import { useDisclosure } from "../hooks/useDisclosure";
+import { SatsNumberPicker } from "./SatsNumberPicker";
 
 interface Props {
   children: (onOpen: () => void) => ReactElement;

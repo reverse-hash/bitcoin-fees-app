@@ -28,11 +28,11 @@ export const alertsSlice = createSlice({
       alerts.push(alert);
       alerts.sort((a, b) => a.sats - b.sats);
     },
-    inactivateAlert(state, action: PayloadAction<string>) {
-      const id = action.payload;
+    activateAlert(state, action: PayloadAction<{ id: string; active: boolean }>) {
+      const { id, active } = action.payload;
       const index = state.alerts.findIndex((a) => a.id === id);
       if (index !== -1) {
-        state.alerts[index].active = false;
+        state.alerts[index].active = active;
       }
     },
     deleteAlert(state, action: PayloadAction<string>) {
@@ -42,5 +42,5 @@ export const alertsSlice = createSlice({
   },
 });
 
-export const { addAlert, deleteAlert, inactivateAlert } = alertsSlice.actions;
+export const { addAlert, deleteAlert, activateAlert } = alertsSlice.actions;
 export default alertsSlice.reducer;

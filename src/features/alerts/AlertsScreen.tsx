@@ -17,10 +17,15 @@ Notifications.setNotificationHandler({
 });
 
 export function AlertsScreen(): ReactElement {
+  // useEffect(() => {
+  //   // (async () => {
+  //   //   await registerAlertCheckerTask();
+  //   // })();
+  //   registerAlertCheckerTask();
+  // }, []);
+
   useEffect(() => {
-    (async () => {
-      await registerAlertCheckerTask();
-    })();
+    registerAlertCheckerTask();
   }, []);
 
   return (

@@ -28,9 +28,5 @@ jobs:
           cmake-version: 3.22.1
           ndk-version: 23.1.7779620
           sdk-version: 34
-      - name: Build emulator
-        run: |
-          sdkmanager --install "system-images;android-34;default;x86_64"
-          echo no | avdmanager --verbose create avd -n build -k "system-images;android-34;default;x86_64"
-      - name: Build for Android
-        run: npm run release
+      - name: Build 
+        run: npm run prebuild && cd android && ./gradlew assembleRelease

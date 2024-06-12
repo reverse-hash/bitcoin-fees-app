@@ -4,18 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "21.x"
-      - name: Install dependencies
-        run: npm install
-#      - name: Check prettier
-#        run: npm run prettier-check
-#      - name: Check ESLint
-#        run: npm run eslint-check
       - name: Setup JDK 17
         uses: actions/setup-java@v3
         with:
@@ -28,5 +16,19 @@ jobs:
           cmake-version: 3.22.1
           ndk-version: 23.1.7779620
           sdk-version: 34
-      - name: Build 
-        run: npm run prebuild && cd android && ./gradlew assembleRelease
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "21.x"
+      - name: Install dependencies
+        run: npm install
+      - name: Install dependencies
+        run: npm run prebuild
+#      - name: Check prettier
+#        run: npm run prettier-check
+#      - name: Check ESLint
+#        run: npm run eslint-check
+      - name: Assemble
+        run: ./android/gradlew assembleRelease

@@ -30,12 +30,10 @@ jobs:
           sdk-version: 34
       - name: Install dependencies
         run: npx expo prebuild --platform android
-      - name: Move to android build folder
-        run: cd android
       - name: Assemble
-        run: ./gradlew assembleRelease
+        run: cd android && ./gradlew assembleRelease
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:
           name: bitcoin-fees.apk
-          path: ./**/*.apk
+          path: android/**/*.apk

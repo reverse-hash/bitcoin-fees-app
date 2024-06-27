@@ -1,4 +1,5 @@
 name: Assemble
+on: workflow_dispatch
 runs:
   using: composite
   steps:

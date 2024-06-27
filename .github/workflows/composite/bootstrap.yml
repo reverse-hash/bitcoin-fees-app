@@ -1,4 +1,5 @@
 name: Bootstrap
+on: workflow_dispatch
 runs:
   using: composite
   steps:

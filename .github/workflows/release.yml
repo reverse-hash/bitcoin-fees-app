@@ -1,0 +1,27 @@
+name: release build
+description: Produces a new release (in draft) given the provided tag
+on: 
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag'     
+        required: true
+        default: 'v2024.1'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bootstrap
+        uses: .github/workflows/bootstrap
+      - name: Sanity
+        uses: .github/workflows/sanity
+      - name: Archive APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitcoin-fees.apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+      - name: Create release
+        run: |
+          gh release create ${{ github.event.inputs.tag }} 'android/app/build/outputs/apk/release/app-release.apk#bitcoin-fees.apk' --notes "Release" --draft
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

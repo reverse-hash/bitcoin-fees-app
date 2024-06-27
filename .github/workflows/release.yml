@@ -1,5 +1,4 @@
 name: release build
-description: Produces a new release (in draft) given the provided tag
 on: 
   workflow_dispatch:
     inputs:
@@ -14,9 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Bootstrap
-        uses: ./.github/workflows/composite/bootstrap
+        uses: ./.github/workflows/bootstrap
       - name: Assemble
-        run: ./.github/workflows/composite/assemble
+        run: ./.github/workflows/composite/assemble.yml
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:

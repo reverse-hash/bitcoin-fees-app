@@ -1,5 +1,11 @@
 name: sanity build
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag'     
+        required: true
+        default: 'v2024.1'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,3 +43,9 @@ jobs:
         with:
           name: bitcoin-fees.apk
           path: android/app/build/outputs/apk/release/app-release.apk
+      - name: Release APK
+        run: |
+          apt-get install hub
+          release create -a android/app/build/outputs/apk/release/app-release.apk -m "v${{ github.event.inputs.tag }}" ${{ github.event.inputs.tag }}
+
+        

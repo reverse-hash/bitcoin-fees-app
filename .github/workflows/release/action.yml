@@ -11,10 +11,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Bootstrap
-        uses: ./.github/workflows/bootstrap.yml
-      - name: Sanity
-        uses: ./.github/workflows/sanity.yml
+        uses: ./.github/workflows/bootstrap
+      - name: Assemble
+        run: ./.github/workflows/assemble
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:

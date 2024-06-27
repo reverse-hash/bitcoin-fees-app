@@ -1,0 +1,15 @@
+name: Assemble
+runs:
+  using: composite
+  steps:
+    - name: Install dependencies
+      run: npm install
+#      - name: Check prettier
+#        run: npm run prettier-check
+#      - name: Check ESLint
+#        run: npm run eslint-check
+    - name: Prebuild
+      run: npx expo prebuild --platform android
+    - name: Assemble APK
+      run: cd android && ./gradlew assembleRelease
+

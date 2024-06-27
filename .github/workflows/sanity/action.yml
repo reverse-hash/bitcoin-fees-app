@@ -1,0 +1,15 @@
+name: sanity build
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Bootstrap
+        uses: ./.github/workflows/bootstrap
+      - name: Assemble
+        run: ./.github/workflows/assemble

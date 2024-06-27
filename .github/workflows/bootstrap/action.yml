@@ -1,5 +1,4 @@
 name: Bootstrap
-description: Setup development tools
 runs:
   using: composite
   steps:

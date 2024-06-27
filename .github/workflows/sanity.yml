@@ -45,7 +45,8 @@ jobs:
           path: android/app/build/outputs/apk/release/app-release.apk
       - name: Release APK
         run: |
-          sudo apt-get install -y hub
-          hub release create -a android/app/build/outputs/apk/release/app-release.apk -m "v${{ github.event.inputs.tag }}" ${{ github.event.inputs.tag }}
+          gh release create ${{ github.event.inputs.tag }} 'android/app/build/outputs/apk/release/app-release.apk#Bitcoin fees'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         

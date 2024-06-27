@@ -6,7 +6,7 @@
     "android": "expo run:android",
     "clean": "rm -rf .expo android ios node_modules",
     "eslint-check": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "i18n-check": "sh .github/workflows/assemble/check_i18n.sh ./src/i18n/??.ts",
+    "i18n-check": "sh .github/workflows/check_i18n.sh ./src/i18n/??.ts",
     "prettier-check": "prettier --check --debug-check .",
     "prettier-fix": "prettier --write .",
     "release": "expo run:android --variant release",

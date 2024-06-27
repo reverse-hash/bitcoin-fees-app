@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Bootstrap
-        uses: .github/workflows/bootstrap
+        uses: ./.github/workflows/bootstrap.yml
       - name: Sanity
-        uses: .github/workflows/sanity
+        uses: ./.github/workflows/sanity.yml
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:

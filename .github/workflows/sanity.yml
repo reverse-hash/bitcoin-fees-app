@@ -1,5 +1,4 @@
 name: sanity build
-description: Assess that the repository is buildable
 on: 
   workflow_dispatch:
   schedule:
@@ -9,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Bootstrap
-        uses: ./.github/workflows/bootstrap
+        uses: ./.github/workflows/bootstrap.yml
       - name: Install dependencies
         run: npm install
 #      - name: Check prettier

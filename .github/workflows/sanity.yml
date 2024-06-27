@@ -46,6 +46,6 @@ jobs:
       - name: Release APK
         run: |
           sudo apt-get install -y hub
-          release create -a android/app/build/outputs/apk/release/app-release.apk -m "v${{ github.event.inputs.tag }}" ${{ github.event.inputs.tag }}
+          hub release create -a android/app/build/outputs/apk/release/app-release.apk -m "v${{ github.event.inputs.tag }}" ${{ github.event.inputs.tag }}
 
         

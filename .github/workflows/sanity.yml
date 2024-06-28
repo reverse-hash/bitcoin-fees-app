@@ -10,6 +10,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Bootstrap
-        uses: .github/workflows/bootstrap
+        uses: ./.github/workflows/bootstrap
       - name: Assemble
-        uses: .github/workflows/assemble
+        uses: ./.github/workflows/assemble

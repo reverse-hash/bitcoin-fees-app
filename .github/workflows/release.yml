@@ -15,7 +15,7 @@ jobs:
       - name: Bootstrap
         uses: ./.github/workflows/bootstrap
       - name: Assemble
-        run: ./.github/workflows/assemble
+        uses: ./.github/workflows/assemble
       - name: Archive APK
         uses: actions/upload-artifact@v4
         with:

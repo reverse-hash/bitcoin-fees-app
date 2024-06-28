@@ -12,4 +12,4 @@ jobs:
       - name: Bootstrap
         uses: ./.github/workflows/bootstrap
       - name: Assemble
-        run: ./.github/workflows/assemble
+        uses: ./.github/workflows/assemble

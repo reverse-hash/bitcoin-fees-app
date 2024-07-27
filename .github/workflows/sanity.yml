@@ -1,4 +1,4 @@
-name: sanity build
+name: sanity
 on: 
   workflow_dispatch:
   schedule:
